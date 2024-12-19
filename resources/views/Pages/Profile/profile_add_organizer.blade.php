@@ -232,7 +232,7 @@
 						<div class="card-body text-right">
 							<div class="row mb-3">
 								<div class="col-sm-3">
-									<h6 class="mb-0">عنوان الفعالية</h6>
+									<h6 class="mb-0"> الاسم واللقب</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
 									<input type="text" class="form-control" value="">
@@ -240,24 +240,24 @@
 							</div>
 							<div class="row mb-3">
 								<div class="col-sm-3">
-									<h6 class="mb-0"> بدء الفعالية </h6>
+									<h6 class="mb-0"> البريد الالكتروني</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="datetime-local" class="form-control" >
+									<input type="text" class="form-control" >
 								</div>
 							</div>
                             <div class="row mb-3">
 								<div class="col-sm-3">
-									<h6 class="mb-0">انتهاء الفعالية </h6>
+									<h6 class="mb-0">رقم الهاتف  </h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="datetime-local" class="form-control" >
+									<input type="text" class="form-control" >
 								</div>
 							</div>
                             
                             <div class="row mb-3">
 								<div class="col-sm-3">
-									<h6 class="mb-0">مكان الفعالية</h6>
+									<h6 class="mb-0">العمر </h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
 									<input type="text" class="form-control" value="">
@@ -265,7 +265,7 @@
 							</div>
                             <div class="row mb-3">
 								<div class="col-sm-3">
-									<h6 class="mb-0">سعة الفعالية</h6>
+									<h6 class="mb-0">الجنس</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
 									<input type="text" class="form-control" value="">
@@ -273,39 +273,25 @@
 							</div>
                             <div class="row mb-3">
 								<div class="col-sm-3">
-									<h6 class="mb-0">نوع الفعالية </h6>
+									<h6 class="mb-0"> الرمز السري </h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<select class="form-control" name="" id="">
-                                    <option value="">أمسية</option>
-                                    <option value="">معرض</option>
-                                    <option value="">حواريات</option>
-                                    <option value=" ">ورشة عمل</option>
-                                    </select>
+                                <input type="text" class="form-control" value="">
 								</div>
 							</div>
 							<div class="row mb-3">
 								<div class="col-sm-3">
-									<h6 class="mb-0">إضافة صورة</h6>
+									<h6 class="mb-0"> اعادة الرمز السري</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="file" class="form-control" >
+									<input type="text" class="form-control" >
 								</div>
 							</div>
-							
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">شرح الفعالية </h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-                                <textarea class="form-control" rows='5' name="" id=""></textarea>								
-                                </div>
-							</div>
-                           
+
 							<div class="row">
 								<div class="col-sm-3"></div>
 								<div class="col-sm-9 text-secondary">
-									<input type="button" class="btn btn-primary px-4" value="حفظ التغييرات">
+									<input type="button" class="btn btn-primary px-4" value="اضافة منظم ">
 								</div>
 							</div>
 						</div>

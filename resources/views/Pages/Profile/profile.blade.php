@@ -193,8 +193,12 @@
 							<div class="d-flex flex-column align-items-center text-center">
 								<img src="https://cdn1.iconfinder.com/data/icons/website-internet/48/website_-_female_user-512.png" alt="Admin" class="rounded-circle p-1" width="110">
 								<div class="mt-3">
-									<h4>أيه عبدالسلام</h4>
+									<h4> {{Auth::user()->name}}</h4>
+                                    @if(Auth::user()->role == 1)
 									<p class="text-secondary mb-1">مستخدم</p>
+                                    @else
+                                    <p class="text-secondary mb-1">ادمن</p>
+                                    @endif
 									<button class="btn">تغيير صورة</button>
 									<button class="btn">حفظ</button>
 								</div>
@@ -207,12 +211,17 @@
 								<a href="/ar/profile/events"><li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
 									<span class="text-secondary">الفعاليات</span>
 								</li></a>
+                                @if(Auth::user()->role == 2)
 								<a href="/ar/profile/users"><li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
 									<span class="text-secondary">مستخدمون</span>
 								</li></a>
                                 <a href="/ar/profile/add_event"><li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
 									<span class="text-secondary">اضافه فعالية</span>
 								</li></a>
+                                <a href="/ar/profile/add_organizer"><li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+									<span class="text-secondary">اضافه منظم</span>
+								</li></a>
+                                @endif
 								
 							</ul>
 						</div>
@@ -226,7 +235,7 @@
 									<h6 class="mb-0">اسم المتخدم</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="أيه عبد السلام">
+									<input type="text" class="form-control" value="{{Auth::user()->name}}  ">
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -234,7 +243,7 @@
 									<h6 class="mb-0">البريد الالكتروني</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="aya@gmail.com">
+									<input type="text" class="form-control" value="{{Auth::user()->email}}">
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -242,7 +251,7 @@
 									<h6 class="mb-0">رقم الهاتف</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="0921234567">
+									<input type="text" class="form-control" value="{{Auth::user()->phone_number}}">
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -250,7 +259,11 @@
 									<h6 class="mb-0">جنس</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="أنثي">
+                                    @if(Auth::user()->sex == "Female")
+									<input type="text" class="form-control" disabled value="انثي">
+                                    @else
+									<input type="text" class="form-control" disabled value="ذكر">
+                                    @endif
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -258,7 +271,7 @@
 									<h6 class="mb-0">عمر المستخدم</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="23">
+									<input type="text" class="form-control" value="{{Auth::user()->age}}">
 								</div>
 							</div>
                            

@@ -29,7 +29,7 @@ Route::post('/register',[UserController::class,'register'])->name('register');
 //Pages
 
 //Home
-Route::get('/',[HomeController::class,'index'])->name('homeAR');
+Route::get('/',[HomeController::class,'index_ar'])->name('homeAR');
 //about
 Route::get('/about',[AboutController::class,'index']);
 //Contact us
@@ -51,6 +51,7 @@ route::group(["prefix"=>"ar"],
     Route::get('/ContactUs',[ContactController::class,'index_ar']);
     //Events
     Route::get('/events',[EventController::class,'index_ar']);
+    Route::get('/events/details',[EventController::class,'details']);
     //Blog
     Route::get('/blog',[BlogController::class,'index_ar']);
     //profile
@@ -58,6 +59,7 @@ route::group(["prefix"=>"ar"],
     Route::get('/profile/events',[UserController::class,'all_events']);
     Route::get('/profile/users',[UserController::class,'all_users']);
     Route::get('/profile/add_event',[UserController::class,'add_event']);
+    Route::get('/profile/add_organizer',[UserController::class,'add_organizer']);
     //auth
     Route::get('/login',[HomeController::class, 'login_ar']); //login view
     Route::get('/register',[HomeController::class, 'register_ar']); //login view

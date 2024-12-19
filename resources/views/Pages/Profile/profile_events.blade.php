@@ -269,8 +269,12 @@
                                     <img src="https://cdn1.iconfinder.com/data/icons/website-internet/48/website_-_female_user-512.png"
                                         alt="Admin" class="rounded-circle p-1" width="110">
                                     <div class="mt-3">
-                                        <h4>أيه عبدالسلام</h4>
-                                        <p class="text-secondary mb-1">مستخدم</p>
+									<h4> {{Auth::user()->name}}</h4>
+                                        @if(Auth::user()->role == 1)
+									<p class="text-secondary mb-1">مستخدم</p>
+                                    @else
+                                    <p class="text-secondary mb-1">ادمن</p>
+                                    @endif
                                         <button class="btn">تغيير صورة</button>
                                         <button class="btn">حفظ</button>
                                     </div>
@@ -283,12 +287,17 @@
 								<a href="/ar/profile/events"><li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
 									<span class="text-secondary">الفعاليات</span>
 								</li></a>
-								<!-- <a href="/ar/profile/users"><li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                @if(Auth::user()->role == 2)
+								<a href="/ar/profile/users"><li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
 									<span class="text-secondary">مستخدمون</span>
 								</li></a>
                                 <a href="/ar/profile/add_event"><li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
 									<span class="text-secondary">اضافه فعالية</span>
-								</li></a> -->
+								</li></a>
+                                <a href="/ar/profile/add_organizer"><li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+									<span class="text-secondary">اضافه منظم</span>
+								</li></a>
+                                @endif
 								
 							</ul>
                             </div>

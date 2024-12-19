@@ -13,4 +13,8 @@ class EventController extends Controller
     public function index_ar(){
         return view('Pages.Events.events_ar');
     }
+
+    public function details(){
+        return view('Pages.Events.event-details');
+    }
 }

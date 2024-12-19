@@ -14,6 +14,7 @@
 		<!-- CSS here -->
 		<link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i&amp;display=swap" rel="stylesheet"> 
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/animate.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/magnific-popup.css')}}">
@@ -23,85 +24,49 @@
         <link rel="stylesheet" href="{{asset('css/default.css')}}">
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
+
+        <style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    span,
+    a,
+    input,
+    textarea,
+    button,
+    option {
+        font-family: 'Cairo' !important;
+        color: #1e3333;
+    }
+    </style>
     </head>
     <body>
         <!-- header -->
-        <header id="home" class="header-area">            
-            <div id="header-sticky" class="menu-area">
-                <div class="container">
-                    <div class="second-menu">
-                        <div class="row align-items-center">
-                            <div class="col-xl-3 col-lg-3">
-                                <div class="logo">
-                                    <a href="index.html"><img src="img/logo/logo.png" alt="logo"></a>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-9">
-                                <div class="responsive"><i class="icon dripicons-align-right"></i></div>
-                                <div class="main-menu text-right text-xl-center">
-                                    <nav id="mobile-menu">
-                                      <ul>
-                                            <li class="active has-sub"><a href="#home">Home  +</a>
-												<ul>
-													<li><a href="index.html">Home Page 01</a></li>
-													<li><a href="index2.html">Home Page 02</a></li>
-													<li><a href="index3.html">Home Page 03</a></li>
-												</ul>
-											</li>
-                                            <li class="has-sub">
-												<a href="about.html">About</a>												
-											</li>
-                                            <li class="has-sub">
-												<a href="venue.html">venue</a>
-											</li>
-                                             <li class="has-sub">
-												<a href="#">Speakers +</a>
-												<ul>
-													<li><a href="speakers.html">Speakers Page</a></li>
-													<li><a href="speaker-details.html">Speakers Details</a></li>
-												</ul>
-											</li>
-                                             <li class="has-sub">
-												<a href="#">Shop +</a>
-												<ul>
-													<li><a href="shop.html">Shop Page</a></li>
-													<li><a href="shop-details.html">Shop Details</a></li>
-												</ul>
-											 </li>
-                                            <li><a href="blog.html">News</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 text-right d-none d-xl-block">
-                                <div class="header-btn second-header-btn">
-                                    <a href="contact.html" class="btn"><i class="far fa-ticket-alt"></i> Buy Ticket</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
+        @include('includes.header_ar')
         <!-- header-end -->
         <!-- main-area -->
         <main>
             <!-- breadcrumb-area -->
-            <section id="parallax" class="slider-area breadcrumb-area d-flex align-items-center justify-content-center fix" style="background-image:url(img/innerpage_bg_img.jpg)">
-				<div class="slider-shape ss-one layer" data-depth="0.10"><img src="img/doddle_6.png" alt="shape"></div>
-				 <div class="slider-shape ss-three layer" data-depth="0.40"><img src="img/doddle_9.png" alt="shape"></div>
-				 <div class="slider-shape ss-four layer" data-depth="0.60"><img src="img/doddle_7.png" alt="shape"></div>			
+            <section id="parallax" class="slider-area breadcrumb-area d-flex align-items-center justify-content-center fix"
+             style="background-image:url({{asset('img/new/pic7.jpg')}})">
+                <div class="slider-shape ss-one layer" data-depth="0.10"><img src="{{asset('img/doddle_6.png')}}" alt="shape"></div>
+                <div class="slider-shape ss-three layer" data-depth="0.40"><img src="{{asset('img/doddle_9.png')}}" alt="shape"></div>
+                <div class="slider-shape ss-four layer" data-depth="0.60"><img src="{{asset('img/doddle_7.png')}}" alt="shape"></div>
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
-                            <div class="breadcrumb-wrap text-center">							
+                            <div class="breadcrumb-wrap text-center">
                                 <div class="breadcrumb-title mb-30">
-                                    <h2>Shop Details</h2>                                   
+                                    <h2>الفعاليات</h2>
                                 </div>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">News</li>
+                                        <li class="breadcrumb-item"><a href="index.html">الحومة</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">فعاليات</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -115,77 +80,40 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-7">
-                        <div class="shop-thumb-tab mb-30">
-                            <ul class="nav" id="myTab2" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                        aria-selected="true"><img src="img/shop/details/thumb1.jpg" alt=""> </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                        aria-selected="false"><img src="img/shop/details/thumb2.jpg" alt=""></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab2" data-toggle="tab" href="#profile1" role="tab"
-                                        aria-selected="false"><img src="img/shop/details/thumb3.jpg" alt=""></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="product-details-img mb-30">
+                        <div class="mb-30">
                             <div class="tab-content" id="myTabContent2">
-                                <div class="tab-pane fade show active" id="home" role="tabpanel">
+                                <div class="tab-pane fade show active" id="home">
                                     <div class="product-large-img">
-                                        <img src="img/shop/details/large1.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="profile" role="tabpanel">
-                                    <div class="product-large-img">
-                                        <img src="img/shop/details/large2.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="profile1" role="tabpanel">
-                                    <div class="product-large-img">
-                                        <img src="img/shop/details/large3.jpg" alt="">
+                                        <img src="{{asset('img/About_pic.jpg')}}" alt="">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-5">
+                    <div class="col-xl-5 text-right" dir="rtl">
                         <div class="product-details mb-30">
                             <div class="product-details-title">
-                                <p>Workstead</p>
-                                <h1>Helios Piranho Lamp</h1>
+                                <p>حواريات</p>
+                                <h1>عنوان الحوارية بلا بلا بلا</h1>
                                 <div class="price details-price pb-30 mb-20">
-                                    <span>$700.00</span>
-                                    <span class="old-price">$820.00</span>
+                                    <span>20 دينار ليبي</span>
                                 </div>
                             </div>
-                            <p>It is a long established fact that a reader will be distracted by the readable content of a page
-                                when looking at its
-                                layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
-                                letters, as opposed to
-                                using 'Content here, content here', making it look like readable English.</p>
+                            <p>شركة ذات صفة مؤسسية تعمل في مجال التنمية المجتمعية الثقافية والفكرية والتعليمية والفنية، وتركز على التنشيط والفعاليات التي تمكن من إضافة الجودة إلى مسار الاستقرار المجتمعي في الحاضر نحو المستقبل.</p>
                             <div class="product-cat mt-30 mb-30">
-                                <span>Category: </span>
-                                <a href="#">furniture,</a>
-                                <a href="#">decor</a>
+                                <span>توقبت: </span><br>
+                                <div style="font-size:18px;">بداية الفاعلية : 20-10-2024 5:30 صباحا</div>
+                                <div style="font-size:18px;">انتهاء الفاعلية : 25-10-2024 8:30 صباحا</div>
+                                <span>المكان: </span><br>
+                                <div style="font-size:18px;">المدينة الفديمة طرابلس, قوس ماركوس </div>
                             </div>                            
                             <div class="product-details-action">
                                 <form action="#">
-                                    <div class="plus-minus">
-                                        <div class="cart-plus-minus"><input type="text" value="1" /></div>
-                                    </div>
-                                    <button class="btn btn-black" type="submit">add to cart</button>                                   
+                                
+                                    <button class="btn btn-black" type="submit">اشتراك</button>                                   
                                 </form>
                             </div>
-							<div class="product-social mt-45">
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-behance"></i></a>
-                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#"><i class="fab fa-youtube"></i></a>
-                            </div>
+							
                         </div>
                     </div>
                 </div>
@@ -193,76 +121,54 @@
         </section>
         <!-- shop-banner-area end -->
         <!-- product-desc-area start -->
-        <section class="product-desc-area pb-80">
-            <div class="container">
+        <section class="product-desc-area pb-80" dir="rtl">
+            <div class="container text-right">
                 <div class="row">
                     <div class="col-12">
                         <div class="bakix-details-tab">
                             <ul class="nav text-center justify-content-center pb-30 mb-50" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="desc-tab" data-toggle="tab" href="#id-desc" role="tab"
-                                        aria-controls="home" aria-selected="true">Description </a>
+                                        aria-controls="home" aria-selected="true">قوانين الانظمام </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="id-add-in" data-toggle="tab" href="#id-add" role="tab"
-                                        aria-controls="profile" aria-selected="false">Additional Information</a>
+                                        aria-controls="profile" aria-selected="false">عن فاعليات الحومة</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="id-r" data-toggle="tab" href="#id-rev" role="tab"
-                                        aria-controls="profile" aria-selected="false">Reviews(10)</a>
+                                        aria-controls="profile" aria-selected="false">المشتركين (50)</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="id-desc" role="tabpanel" aria-labelledby="desc-tab">
                                 <div class="event-text mb-40">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna
-                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                                        ut aliquip ex ea commodo consequat.
-                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                        fugiat nulla pariatur. Excepteur sint
-                                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-                                        id est laborum. Sed ut perspiciatis
-                                        unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                                        totam rem aperiam, eaque ipsa quae ab
-                                        illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                                        Nemo enim ipsam voluptatem quia
-                                        voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-                                        eos qui ratione voluptatem sequi
-                                        nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                        consectetur, adipisci velit, sed quia non
-                                        numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat
-                                        voluptatem.</p>
-                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                        deserunt mollit anim id est laborum. Sed ut
-                                        perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                        laudantium, totam rem aperiam, eaque
-                                        ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-                                        sunt explicabo. Nemo enim ipsam voluptatem
-                                        quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
-                                        dolores eos qui ratione voluptatem sequi
-                                        nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                        consectetur, adipisci velit, sed quia non
-                                        numquam eius modi tempora.</p>
+                                    <p>الالتزام بالمواعيد: يرجى الحضور في الوقت المحدد لبداية ونهاية الفعالية. <br>
+                                    لاحترام والتعاون: احترام المشاركين والمنظمين. و تجنب أي سلوك غير لائق أو يؤدي إلى إزعاج الآخرين. <br>
+                                    الحفاظ على النظافة: يُرجى الحفاظ على نظافة المكان والتخلص من النفايات في الأماكن المخصصة. <br>
+                                    الأطفال والمرافقين: الأطفال مرحب بهم (إذا كانت الفعالية تناسب جميع الأعمار). <br>
+                                    الالتزام بتعليمات المنظمين: يُرجى التعاون مع تعليمات فريق التنظيم لضمان سلامة الجميع وسير الفعالية بسلاسة. <br>
+                                    المسؤولية الشخصية: المنظمون غير مسؤولين عن فقدان أو تلف الممتلكات الشخصية، لذا يُرجى الاعتناء بمقتنياتك. <br>
+                                    </p>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="id-add" role="tabpanel" aria-labelledby="id-add-in">
                                 <div class="additional-info">
                                     <div class="table-responsive">
-                                        <h4>Additional information</h4>
+                                        <h4>معلومات اضافية</h4>
                                         <table class="table">
                                             <tbody>
                                                 <tr>
-                                                    <th>Weight</th>
+                                                    <th>مكان الفاعلية</th>
                                                     <td class="product_weight">1.4 oz</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Dimensions</th>
+                                                    <th>بداية الفاعلية</th>
                                                     <td class="product_dimensions">62 × 56 × 12 in</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Size</th>
+                                                    <th>نهاية الفاعلية</th>
                                                     <td class="product_dimensions">XL, XXL, LG, SM, MD</td>
                                                 </tr>
                                             </tbody>
@@ -273,35 +179,8 @@
                             <div class="tab-pane fade" id="id-rev" role="tabpanel" aria-labelledby="id-r">
                                 <div class="additional-info">
                                     <div class="event-text mb-40">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                            incididunt ut labore et dolore magna
-                                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                                            ut aliquip ex ea commodo consequat.
-                                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                            fugiat nulla pariatur. Excepteur sint
-                                            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-                                            id est laborum. Sed ut perspiciatis
-                                            unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                                            totam rem aperiam, eaque ipsa quae ab
-                                            illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                                            Nemo enim ipsam voluptatem quia
-                                            voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-                                            eos qui ratione voluptatem sequi
-                                            nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                            consectetur, adipisci velit, sed quia non
-                                            numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat
-                                            voluptatem.</p>
-                                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                            deserunt mollit anim id est laborum. Sed ut
-                                            perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                            laudantium, totam rem aperiam, eaque
-                                            ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-                                            sunt explicabo. Nemo enim ipsam voluptatem
-                                            quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
-                                            dolores eos qui ratione voluptatem sequi
-                                            nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                            consectetur, adipisci velit, sed quia non
-                                            numquam eius modi tempora.</p>
+                                        <p></p>
+                                        <p></p>
                                     </div>
                                 </div>
                             </div>

@@ -23,6 +23,9 @@ class UserController extends Controller
     public function add_event(){
         return view('Pages.Profile.profile_add_event');
     }
+    public function add_organizer(){
+        return view('Pages.Profile.profile_add_organizer');
+    }
 
     public function Register(Request $request){
 
