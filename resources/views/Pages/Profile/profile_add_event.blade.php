@@ -229,13 +229,15 @@
 				</div>
 				<div class="col-lg-8">
 					<div class="card">
+                        <form action="{{Route('addEvent')}}" method="post" enctype="multipart/form-data" >
+                            @csrf
 						<div class="card-body text-right">
 							<div class="row mb-3">
 								<div class="col-sm-3">
 									<h6 class="mb-0">عنوان الفعالية</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="">
+									<input type="text" class="form-control" name="title" value="" required>
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -243,7 +245,7 @@
 									<h6 class="mb-0"> بدء الفعالية </h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="datetime-local" class="form-control" >
+									<input type="datetime-local" name="start-date" class="form-control" required>
 								</div>
 							</div>
                             <div class="row mb-3">
@@ -251,7 +253,7 @@
 									<h6 class="mb-0">انتهاء الفعالية </h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="datetime-local" class="form-control" >
+									<input type="datetime-local" name="end-date" class="form-control" required>
 								</div>
 							</div>
                             
@@ -260,7 +262,7 @@
 									<h6 class="mb-0">مكان الفعالية</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="">
+									<input type="text" class="form-control" name="location" value="" required>
 								</div>
 							</div>
                             <div class="row mb-3">
@@ -268,7 +270,20 @@
 									<h6 class="mb-0">سعة الفعالية</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="">
+									<input type="text" class="form-control" name="capacity" value="">
+								</div>
+							</div>
+                            <div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">الفعالية مسموحة الي  </h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<select class="form-control" name="gender_cond" id="" required>
+                                    <option value="0" disabled selected>اختيار</option>
+                                    <option value="1">ذكور وإناث</option>
+                                    <option value="2">الذكور فقط</option>
+                                    <option value="3">الإناث فقط</option>
+                                    </select>
 								</div>
 							</div>
                             <div class="row mb-3">
@@ -276,11 +291,12 @@
 									<h6 class="mb-0">نوع الفعالية </h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<select class="form-control" name="" id="">
-                                    <option value="">أمسية</option>
-                                    <option value="">معرض</option>
-                                    <option value="">حواريات</option>
-                                    <option value=" ">ورشة عمل</option>
+									<select class="form-control" name="type" id="" required>
+                                    <option value="0" disabled selected>اختيار</option>
+                                    <option value="Evining">أمسية</option>
+                                    <option value="galory">معرض</option>
+                                    <option value="discussions">حواريات</option>
+                                    <option value="workshop">ورشة عمل</option>
                                     </select>
 								</div>
 							</div>
@@ -289,7 +305,7 @@
 									<h6 class="mb-0">إضافة صورة</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="file" class="form-control" >
+									<input type="file" name="image" class="form-control" required>
 								</div>
 							</div>
 							
@@ -298,18 +314,19 @@
 									<h6 class="mb-0">شرح الفعالية </h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-                                <textarea class="form-control" rows='5' name="" id=""></textarea>								
+                                <textarea class="form-control" name="description" rows='5' name="" id="" required></textarea>								
                                 </div>
 							</div>
                            
 							<div class="row">
 								<div class="col-sm-3"></div>
 								<div class="col-sm-9 text-secondary">
-									<input type="button" class="btn btn-primary px-4" value="حفظ التغييرات">
+									<button class="btn btn-primary px-4">إضافة فاعلية</button>
 								</div>
 							</div>
 						</div>
 					</div>
+                    </form>
 					
 				</div>
 			</div>

@@ -88,7 +88,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 					<img src="{{asset('auth_assets/images/img-04.png')}}" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form" method="POST" action="{{ route('register') }}">
+				<form class="login100-form validate-form" method="POST" action="{{route('register')}}" enctype="multipart/form-data">
 					@csrf
 					<span class="login100-form-title">
 						انشاء حساب 
@@ -124,7 +124,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 						</span>
 					</div>
 					<div class="wrap-input100 validate-input">
-						<select class="input100 text-right" name="Gender" placeholder="الجنسس" style="border: 0;">
+						<select class="input100 text-right" name="Gender" placeholder="الجنس" style="border: 0;">
 							<option value="null" disabled selected>الجنس</option>
 							<option value="Male">ذكر</option>
 							<option value="Female">انثي</option>
@@ -155,7 +155,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 							إنشاء حساب
 						</button>
 					</div>
-
+					</form>
 					<div class="text-center p-t-12">
 						<span class="txt1">
 							هل لديك حساب بالفعل ؟
@@ -171,7 +171,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>
-				</form>
 			</div>
 		</div>
 	</div>

@@ -133,25 +133,25 @@
                 <div class="container">
                     <div class="row ">
                         <div class="col-12 justify-content-between">
-                         <a href="/events"><div class="feature-box fadeInDown animated col-3" data-animation="fadeInDown animated" data-delay=".2s">
+                         <a href="/ar/events"><div class="feature-box fadeInDown animated col-3" data-animation="fadeInDown animated" data-delay=".2s">
 							<div class="crl mb-30">
 								<img src="img/icon_111.png" alt="icon">
 							</div>
 							<h4 style="font-family: 'Cairo';">حـواريـات</h4>
 						 </div></a>
-						   <a href="/events"><div class="feature-box wow fadeInDown animated col-3" data-animation="fadeInDown animated" data-delay=".2s">
+						   <a href="/ar/events"><div class="feature-box wow fadeInDown animated col-3" data-animation="fadeInDown animated" data-delay=".2s">
 							<div class="crl mb-30">
 								<img src="img/icon_22.png" alt="icon">
 							</div>
 							<h4 style="font-family: 'Cairo';">ورش عـمـل</h4>
 						 </div></a>
-						   <a href="/events"><div class="feature-box wow fadeInDown animated col-3" data-animation="fadeInDown animated" data-delay=".2s">
+						   <a href="/ar/events"><div class="feature-box wow fadeInDown animated col-3" data-animation="fadeInDown animated" data-delay=".2s">
 							<div class="crl mb-30">
 								<img src="img/icon_33.png" alt="icon">
 							</div>
 							<h4 style="font-family: 'Cairo';">أمـسـيـات</h4>
 						 </div></a>
-                         <a href="/events"><div class="feature-box wow fadeInDown animated col-3" data-animation="fadeInDown animated" data-delay=".2s">
+                         <a href="/ar/events"><div class="feature-box wow fadeInDown animated col-3" data-animation="fadeInDown animated" data-delay=".2s">
 							<div class="crl mb-30">
 								<img src="img/icon_44.png" alt="icon">
 							</div>
@@ -179,7 +179,7 @@
 								<div class="wow fadeInDown animated " data-animation="fadeInUp animated" data-delay=".2s">
 									<p style="font-family: 'Cairo'; font-size: 20px;">هي شركة ذات روح مؤسسية تعمل في مجال تنمية المجتمع ثقافيا ومعرفيا وتوعويا وفنيا،</p>
 									 <p style="font-family: 'Cairo'; font-size: 20px;">وتهتم بالتنشيط والفعاليات بما يتيح إضافة نوعية في مسار الاستقرار المجتمعي في الحاضر نحو المستقبل.</p>
-								   <a href="#" class="btn mt-20"><i class="far fa-ticket-alt"></i> انظم لنا</a>
+								   <a href="/ar/about" class="btn mt-20"><i class="far fa-ticket-alt"></i>  المزيد </a>
 							   </div>
                             </div>
                         </div>
@@ -212,61 +212,28 @@
                      </div>
                  </div>
                  <div class="row blog-active2 wow fadeInDown animated text-right" data-animation="fadeInDown animated" data-delay=".2s">
+                    @foreach($events as $event)
                      <div class="col-lg-4 col-md-6">
                          <div class="single-post mb-30">
                              <div class="blog-thumb">
-                                 <a href="blog-details.html"><img src="img/New/event1.jpg" alt="img" hight="100" width="300"></a>
+                                 <a href="/ar/event/{{$event->id}}"><img src="{{asset(Storage::url($event->image))}}" style="max-height:350px;height: 350px;width: 100%;" alt="img" hight="100" width="300"></a>
                              </div>
                              <div class="blog-content">
                                  <div class="b-meta mb-20">
                                  <ul>
-                                     <li><i class="fa fa-user ml-2"></i>قام 35 بالاشتراك</li>
-                                     <li><a href="#"><i class="far fa-clock ml-2"></i>الخميس</a></li>
+                                     <li><i class="fa fa-user ml-2"></i>قام 5 بالاشتراك</li>
+                                     <li><a href="/ar/event/{{$event->id}}"><i class="far fa-clock ml-2"></i>{{$event->event_start}}</a></li>
                                  </ul>
                                  </div>
-                                 <h4><a href="blog-details.html">التصوير والتعديل بالهاتف</a></h4>
-                                 <p>انضموا الينا في ورش عمل التصوير والتعديل باستعمال الهاتف فقط لتنمية مهارات التصوير لديك دون الحاجه الي كميرا</p>
+                                 <h4><a href="/ar/event/{{$event->id}}">{{$event->title}}</a></h4>
+                                 <p style="height: 90px;
+                                           overflow: hidden;
+                                           text-overflow: ellipsis;">{{$event->description}}</p>
                               
                              </div>
                          </div>
                      </div>
-                     <div class="col-lg-4 col-md-6">
-                         <div class="single-post mb-30">
-                             <div class="blog-thumb">
-                                 <a href="blog-details.html"><img src="img/New/event3.jpg" alt="img"></a>
-                             </div>
-                             <div class="blog-content">
-                                 <div class="b-meta mb-20">
-                                   <ul>
-                                   <li><i class="fa fa-user ml-2"></i>قام 35 بالاشتراك</li>
-                                   <li><a href="#"><i class="far fa-clock ml-2"></i>السبت</a></li>
-                                 </ul>
-                                 </div>
-                                 <h4><a href="blog-details.html">أهمية الشباب في التنمية الاقتصادية</a></h4>
-                                 <p>انظموا لنا في جلسة حوارية تتحدث عن اهمية الشباب في التنميه الاقتصادية مع المحاور طارق عياد نتحدث فيها عن منظور اقتصادي</p>
-                                 
-                             </div>
-                         </div>
-                     </div>
-                     <div class="col-lg-4 col-md-6">
-                         <div class="single-post mb-30">
-                             <div class="blog-thumb">
-                                 <a href="blog-details.html"><img src="img/New/event1.jpg" alt="img"></a>
-                             </div>
-                             <div class="blog-content">
-                                 <div class="b-meta mb-20">
-                                   <ul>
-                                   <li><i class="fa fa-user ml-2"></i>قام 35 بالاشتراك</li>
-                                   <li><a href="#"><i class="far fa-clock ml-2"></i>الخميس</a></li>
-                                 </ul>
-                                 </div>
-                                 <h4><a href="blog-details.html">التصوير والتعديل بالهاتف</a></h4>
-                                 <p>انضموا الينا في ورش عمل التصوير والتعديل باستعمال الهاتف فقط لتنمية مهارات التصوير لديك دون الحاجه الي كميرا</p>
-                              
-                                 
-                             </div>
-                         </div>
-                     </div>
+                     @endforeach
                  </div>
              </div>
          </section>
@@ -324,15 +291,25 @@
                            
                            <div class="col-lg-12">
                               <div class="event-list-content fix">
-                                 <ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class="">
-									<li><i class="fas fa-map-marker-alt"></i> صالة الشيخ ابوريانة, المدينة القديمة </li>
-									<li><i class="far fa-clock"></i> 5:00 مساء - 9:00 مساء</li>
+                                  <ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class="">
+                                     @if($discussions)
+									<li><i class="fas fa-map-marker-alt"></i> {{$discussions->location}}</li>
+									<li><i class="far fa-clock"></i> {{$discussions->event_start}}</li>
 								 </ul>
-								 <h2>اهمية الشباب في التنمية الاقتصادية</h2>
-								 <p>الشباب يمثلون محوراً أساسياً في التنمية الاقتصادية لأي دولة بفضل قدرتهم على الابتكار والتكيف مع التكنولوجيات الجديدة، ما يساعد على تطوير حلول مبتكرة وتحسين الإنتاجية. كونهم جزءاً كبيراً من القوى العاملة، فإن مشاركتهم في سوق العمل تسهم في زيادة الإنتاج الكلي وتعزيز النمو الاقتصادي. كما يتميز الشباب بميولهم نحو ريادة الأعمال وإنشاء مشاريع جديدة، مما يخلق فرص عمل جديدة ويساعد على تنويع الاقتصاد.</p>
-								 <a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt pl-2"></i> اشتراك </a>
-								 <a href="#" class="btn mt-20">اقراء المزيد</a>
+								 <h2>{{$discussions->title}}</h2>
+								 <p style="height: 90px;
+                                           overflow: hidden;
+                                           text-overflow: ellipsis;"> {{ $discussions->description}} </p>
+								 <a href="/event/subscribe/{{$discussions->id}}" class="btn mt-20 mr-10"><i class="far fa-ticket-alt pl-2"></i> اشتراك </a>
+								 <a href="/ar/event/{{$discussions->id}}" class="btn mt-20">اقراء المزيد</a>
 								 <div class="crical"><i class="fal fa-arrow-left"></i> </div>
+                                 @else
+                                 <li></li>
+									<li> </li>
+								 </ul>
+								 <h2> لايوجد حواريات  </h2>
+								 <div class="crical"><i class="fal fa-arrow-left"></i> </div>
+                                 @endif
                               </div>
                            </div>
                         </div>
@@ -342,30 +319,28 @@
                      <div class="tab-pane fade " id="two" role="tabpanel" aria-labelledby="nav-profile-tab">
                         <!-- row loop -->
                         <div class="row mb-30">
-                           <div class="col-lg-2">
-							  <div class="user">
-								  <div class="title">  
-									  <img src="img/event_avatar_1.png" alt="img">							  
-									 <h5>Rosalina William</h5>
-									 <p>UXX Deisgn</p>
-								  </div>
-								  <ul>
-                                 <li><i class="fal fa-coffee"></i> Coffe & Snacks</li>
-                                 <li><i class="fal fa-video"></i> Video Streming</li>
-                              </ul>
-							  </div>
-                           </div>
-                           <div class="col-lg-10">
+                           
+                           <div class="col-lg-12">
                               <div class="event-list-content fix">
-                                 <ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class="">
-									<li><i class="fas fa-map-marker-alt"></i> Waterfront Hotel, London</li>
-									<li><i class="far fa-clock"></i> 9.30 - 10.30 AM</li>
+                                  <ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class="">
+                                     @if($workshop)
+									<li><i class="fas fa-map-marker-alt"></i> {{$workshop->location}}</li>
+									<li><i class="far fa-clock"></i> {{$workshop->event_start}}</li>
 								 </ul>
-								 <h2>UXX Design Trend Party 2019</h2>
-								 <p>In order to save time you have to break down the content strategy for the event or conference you are planning step by step. Creating this process from scratch will take the longest amount of time to build, but once you have content production foundation.</p>
-								 <a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Buy Ticket</a>
-								 <a href="#" class="btn mt-20">Read More</a>
-								 <div class="crical"><i class="fal arrow-right"></i> </div>
+								 <h2>{{$workshop->title}}</h2>
+								 <p style="height: 90px;
+                                           overflow: hidden;
+                                           text-overflow: ellipsis;"> {{ $workshop->description}} </p>
+								 <a href="/event/subscribe/{{$workshop->id}}" class="btn mt-20 mr-10"><i class="far fa-ticket-alt pl-2"></i> اشتراك </a>
+								 <a href="/ar/event/{{$workshop->id}}" class="btn mt-20">اقراء المزيد</a>
+								 <div class="crical"><i class="fal fa-arrow-left"></i> </div>
+                                 @else
+                                 <li></li>
+									<li> </li>
+								 </ul>
+								 <h2> لايوجد ورش عمل  </h2>
+								 <div class="crical"><i class="fal fa-arrow-left"></i> </div>
+                                 @endif
                               </div>
                            </div>
                         </div>
@@ -375,30 +350,28 @@
                      <div class="tab-pane fade" id="three" role="tabpanel" aria-labelledby="nav-contact-tab">
 						<!-- row loop -->
                         <div class="row mb-30">
-                           <div class="col-lg-2">
-							  <div class="user">
-								  <div class="title">  
-									  <img src="img/event_avatar_4.png" alt="img">							  
-									 <h5>Kimjing J. Jalim</h5>
-									 <p>UX Deisgn</p>
-								  </div>
-								  <ul>
-                                 <li><i class="fal fa-coffee"></i> Coffe & Snacks</li>
-                                 <li><i class="fal fa-video"></i> Video Streming</li>
-                              </ul>
-							  </div>
-                           </div>
-                           <div class="col-lg-10">
+                           
+                           <div class="col-lg-12">
                               <div class="event-list-content fix">
-                                 <ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class="">
-									<li><i class="fas fa-map-marker-alt"></i> Waterfront Hotel, London</li>
-									<li><i class="far fa-clock"></i>  9.30 - 10.30 AM</li>
+                                  <ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class="">
+                                     @if($Evining)
+									<li><i class="fas fa-map-marker-alt"></i> {{$Evining->location}}</li>
+									<li><i class="far fa-clock"></i> {{$Evining->event_start}}</li>
 								 </ul>
-								 <h2>Intro Jiknim Jikis 2019</h2>
-								 <p>In order to save time you have to break down the content strategy for the event or conference you are planning step by step. Creating this process from scratch will take the longest amount of time to build, but once you have content production foundation.</p>
-								 <a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Buy Ticket</a>
-								 <a href="#" class="btn mt-20">Read More</a>
-								 <div class="crical"><i class="fal fa-arrow-right"></i> </div>
+								 <h2>{{$Evining->title}}</h2>
+								 <p style="height: 90px;
+                                           overflow: hidden;
+                                           text-overflow: ellipsis;"> {{ $Evining->description}} </p>
+								 <a href="/event/subscribe/{{$Evining->id}}" class="btn mt-20 mr-10"><i class="far fa-ticket-alt pl-2"></i> اشتراك </a>
+								 <a href="/ar/event/{{$Evining->id}}" class="btn mt-20">اقراء المزيد</a>
+								 <div class="crical"><i class="fal fa-arrow-left"></i> </div>
+                                 @else
+                                 <li></li>
+									<li> </li>
+								 </ul>
+								 <h2> لايوجد امسيات  </h2>
+								 <div class="crical"><i class="fal fa-arrow-left"></i> </div>
+                                 @endif
                               </div>
                            </div>
                         </div>
@@ -407,30 +380,28 @@
 					 <div class="tab-pane fade" id="four" role="tabpanel" aria-labelledby="nav-contact-tab">
 						<!-- row loop -->
                         <div class="row mb-30">
-                           <div class="col-lg-2">
-							  <div class="user">
-								  <div class="title">  
-									  <img src="img/event_avatar_2.png" alt="img">							  
-									 <h5>Kelian M. Bappe</h5>
-									 <p>youtubing</p>
-								  </div>
-								  <ul>
-                                 <li><i class="fal fa-coffee"></i> Coffe & Snacks</li>
-                                 <li><i class="fal fa-video"></i> Video Streming</li>
-                              </ul>
-							  </div>
-                           </div>
-                           <div class="col-lg-10">
+                           
+                           <div class="col-lg-12">
                               <div class="event-list-content fix">
-                                 <ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class="">
-									<li><i class="fas fa-map-marker-alt"></i> Waterfront Hotel, London</li>
-									<li><i class="far fa-clock"></i> 9.30 - 10.30 AM</li>
+                                  <ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class="">
+                                     @if($galory)
+									<li><i class="fas fa-map-marker-alt"></i> {{$galory->location}}</li>
+									<li><i class="far fa-clock"></i> {{$galory->event_start}}</li>
 								 </ul>
-								 <h2>Rokolo DJ Dancing 2019</h2>
-								 <p>In order to save time you have to break down the content strategy for the event or conference you are planning step by step. Creating this process from scratch will take the longest amount of time to build, but once you have content production foundation.</p>
-								 <a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Buy Ticket</a>
-								 <a href="#" class="btn mt-20">Read More</a>
-								 <div class="crical"><i class="fal fa-arrow-right"></i> </div>
+								 <h2>{{$galory->title}}</h2>
+								 <p style="height: 90px;
+                                           overflow: hidden;
+                                           text-overflow: ellipsis;"> {{ $galory->description}} </p>
+								 <a href="/event/subscribe/{{$galory->id}}" class="btn mt-20 mr-10"><i class="far fa-ticket-alt pl-2"></i> اشتراك </a>
+								 <a href="/ar/event/{{$galory->id}}" class="btn mt-20">اقراء المزيد</a>
+								 <div class="crical"><i class="fal fa-arrow-left"></i> </div>
+                                 @else
+                                 <li></li>
+									<li> </li>
+								 </ul>
+								 <h2> لايوجد معارض  </h2>
+								 <div class="crical"><i class="fal fa-arrow-left"></i> </div>
+                                 @endif
                               </div>
                            </div>
                         </div>
@@ -439,7 +410,7 @@
                   </div>
                </div>
 			   <div class="col-lg-12 justify-content-center text-center">
-				<a href="#" class="btn mt-20 mr-10">كل الـفـعاليـات  +</a>
+				<a href="/ar/events" class="btn mt-20 mr-10">كل الـفـعاليـات  +</a>
 			   </div>
 			   </div>
             </div>

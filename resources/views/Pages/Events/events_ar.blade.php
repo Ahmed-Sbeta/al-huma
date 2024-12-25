@@ -206,107 +206,28 @@
                     </div>
                 </div>
                 <div class="row" dir="rtl">
+                    @foreach($events as $event)
                     <div class="col-md-4">
                         <div class="blog-card blog-card-blog">
                             <div class="blog-card-image">
-                                <a href="#"> <img class="img" src="{{asset('img/new/event3.jpg')}}" style="max-height: 340px;height: 100%;width: 354px;">
-                                </a>
-                                <div class="ripple-cont"></div>
-                            </div>
-                            <div class="blog-table text-right">
-                                <h6 class="blog-category blog-text-success"><i class="far fa-newspaper"></i> حواريات</h6>
-                                <h4 class="blog-card-caption">
-                                    <a href="#">أهمية الشباب في التنمية الاقتصادية</a>
-                                </h4>
-                                <p class="blog-card-description">الحدث في : قاعة المجلس المحلي</p>
-                                <div class="ftr">
-                                    <div class="pt-2"> <i class="far fa-clock"></i> Jan 23 , 5:00 PM </div>
-                                
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="blog-card blog-card-blog">
-                            <div class="blog-card-image">
-                                <a href="#"> <img class="img" src="{{asset('img/new/event1.jpg')}}" style="max-height: 340px;height: 100%;width: 354px;">
-                                </a>
-                                <div class="ripple-cont"></div>
-                            </div>
-                            <div class="blog-table text-right">
-                                <h6 class="blog-category blog-text-success"><i class="fas fa-bolt"></i> ورش عمل</h6>
-                                <h4 class="blog-card-caption">
-                                    <a href="#">التصوير والتعديل باستخدام الهاتف المحمول</a>
-                                </h4>
-                                <p class="blog-card-description">الحدث في : قاعة المجلس المحلي</p>
-                                <div class="ftr">
-                                    <div class="pt-2"> <i class="far fa-clock"></i> Jan 23 , 5:00 PM </div>
-                                
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="blog-card blog-card-blog">
-                            <div class="blog-card-image">
-                                <a href="#"> <img class="img" src="{{asset('img/new/event2.jpg')}}" style="max-height: 340px;height: 100%;width: 354px;">
-                                </a>
-                                <div class="ripple-cont"></div>
-                            </div>
-                            <div class="blog-table text-right">
-                                <h6 class="blog-category blog-text-success"><i class="far fa-cloud-moon"></i> أمسيات</h6>
-                                <h4 class="blog-card-caption">
-                                    <a href="#">طــرابـلـس الـبـيَـة يـكـفيـنـي هـواهـا</a>
-                                </h4>
-                                <p class="blog-card-description">الحدث في : قاعة المجلس المحلي</p>
-                                <div class="ftr">
-                                    <div class="pt-2"> <i class="far fa-clock"></i> Jan 23 , 5:00 PM </div>
-                                
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="blog-card blog-card-blog">
-                            <div class="blog-card-image">
-                                <a href="#"> <img class="img" src="{{asset('img/new/event4.jpg')}}" style="max-height: 340px;height: 100%;width: 354px;">
-                                </a>
-                                <div class="ripple-cont"></div>
-                            </div>
-                            <div class="blog-table text-right">
-                                <h6 class="blog-category blog-text-success"><i class="far fa-newspaper"></i> حواريات</h6>
-                                <h4 class="blog-card-caption">
-                                    <a href="#">شيء يتحدث عن شيء لا أعرف ماذا بالضبط</a>
-                                </h4>
-                                <p class="blog-card-description">الحدث في : قاعة المجلس المحلي</p>
-                                <div class="ftr">
-                                    <div class="pt-2"> <i class="far fa-clock"></i> Jan 23 , 5:00 PM </div>
-                                
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="blog-card blog-card-blog">
-                            <div class="blog-card-image">
-                                <a href="#"> <img class="img" src="{{asset('img/new/pic1.jpg')}}" style="max-height: 340px;height: 100%;width: 354px;">
+                                <a href="/ar/event/{{$event->id}}"> <img class="img" src="{{Storage::url($event->image)}}" style="max-height: 340px;height: 340px;width: 354px;">
                                 </a>
                                 <div class="ripple-cont"></div>
                             </div>
                             <div class="blog-table text-right">
                                 <h6 class="blog-category blog-text-success"><i class="fas fa-blog"></i> أمسيات</h6>
                                 <h4 class="blog-card-caption">
-                                    <a href="#">شيء ما في الصورة لا أعرف ما هو حقيقة</a>
+                                    <a href="/ar/event/{{$event->id}}">{{$event->title}}</a>
                                 </h4>
-                                <p class="blog-card-description">الحدث في : قاعة المجلس المحلي</p>
+                                <p class="blog-card-description">الحدث في : {{$event->location}}</p>
                                 <div class="ftr">
-                                    <div class="pt-2"> <i class="far fa-clock"></i> Jan 23 , 5:00 PM </div>
+                                    <div class="pt-2"> <i class="far fa-clock"></i> {{$event->event_start}} </div>
                                 
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
                 <div class="row">
                     <div class="col-12">

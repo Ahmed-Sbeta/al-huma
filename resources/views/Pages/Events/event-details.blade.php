@@ -5,7 +5,7 @@
 <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-         <title>Eventes - Event Conference HTML5 Template</title>
+         <title>الحومة - فعاليات</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
@@ -78,13 +78,18 @@
 			<!-- shop-banner-area start -->
         <section class="shop-banner-area pt-120 pb-90 wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s">
             <div class="container">
+                @if(session('msg'))
+                <div class="alert text-right alert-success">
+                {{ session('msg') }}
+                </div>
+                @endif
                 <div class="row">
                     <div class="col-xl-7">
                         <div class="mb-30">
                             <div class="tab-content" id="myTabContent2">
                                 <div class="tab-pane fade show active" id="home">
                                     <div class="product-large-img">
-                                        <img src="{{asset('img/About_pic.jpg')}}" alt="">
+                                        <img src="{{asset(Storage::url($event->image))}}" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -93,25 +98,34 @@
                     <div class="col-xl-5 text-right" dir="rtl">
                         <div class="product-details mb-30">
                             <div class="product-details-title">
-                                <p>حواريات</p>
-                                <h1>عنوان الحوارية بلا بلا بلا</h1>
+                                <p>{{$event->type}}</p>
+                                <h1>{{$event->title}}</h1>
                                 <div class="price details-price pb-30 mb-20">
-                                    <span>20 دينار ليبي</span>
+                                    @if($event->male_allowed && $event->Female_allowed)
+                                    <span>الفاعلية متاحه للجميع</span>
+                                    @elseif($event->male_allowed)
+                                    <span>الفاعلية متاحه للذكور فقط</span>
+                                    @else
+                                    <span>الفاعلية متاحه للإناث فقط</span>
+                                    @endif
+                                    
                                 </div>
                             </div>
-                            <p>شركة ذات صفة مؤسسية تعمل في مجال التنمية المجتمعية الثقافية والفكرية والتعليمية والفنية، وتركز على التنشيط والفعاليات التي تمكن من إضافة الجودة إلى مسار الاستقرار المجتمعي في الحاضر نحو المستقبل.</p>
+                            <p>{{$event->description}}</p>
                             <div class="product-cat mt-30 mb-30">
                                 <span>توقبت: </span><br>
-                                <div style="font-size:18px;">بداية الفاعلية : 20-10-2024 5:30 صباحا</div>
-                                <div style="font-size:18px;">انتهاء الفاعلية : 25-10-2024 8:30 صباحا</div>
+                                <div style="font-size:18px;">بداية الفاعلية : {{$event->event_start}}</div>
+                                <div style="font-size:18px;">انتهاء الفاعلية : {{$event->event_end}}</div>
                                 <span>المكان: </span><br>
-                                <div style="font-size:18px;">المدينة الفديمة طرابلس, قوس ماركوس </div>
+                                <div style="font-size:18px;"> {{$event->location}}  </div>
                             </div>                            
                             <div class="product-details-action">
-                                <form action="#">
-                                
-                                    <button class="btn btn-black" type="submit">اشتراك</button>                                   
-                                </form>
+                            @if($hasParticipated)
+                                <a href="/ar/unsubscribe/{{$event->id}}" class="btn btn-black" style="color: #fff;" type="submit">الغاء الاشتراك</a>                                   
+                            @else
+                                <a href="/ar/subscribe/{{$event->id}}" class="btn btn-black" style="color: #fff;" type="submit">اشتراك</a>                                   
+                            @endif
+                                <a href="/ar/events/participants/{{$event->id}}" class="btn btn-black" style="color: #fff;" type="submit">قائمة المشتركين</a>
                             </div>
 							
                         </div>
@@ -133,12 +147,12 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="id-add-in" data-toggle="tab" href="#id-add" role="tab"
-                                        aria-controls="profile" aria-selected="false">عن فاعليات الحومة</a>
+                                        aria-controls="profile" aria-selected="false">عن فاعاليات الحومة</a>
                                 </li>
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a class="nav-link" id="id-r" data-toggle="tab" href="#id-rev" role="tab"
                                         aria-controls="profile" aria-selected="false">المشتركين (50)</a>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                         <div class="tab-content" id="myTabContent">
@@ -161,15 +175,15 @@
                                             <tbody>
                                                 <tr>
                                                     <th>مكان الفاعلية</th>
-                                                    <td class="product_weight">1.4 oz</td>
+                                                    <td class="product_weight">{{$event->location}}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>بداية الفاعلية</th>
-                                                    <td class="product_dimensions">62 × 56 × 12 in</td>
+                                                    <td class="product_dimensions">{{$event->event_start}}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>نهاية الفاعلية</th>
-                                                    <td class="product_dimensions">XL, XXL, LG, SM, MD</td>
+                                                    <td class="product_dimensions">{{$event->event_end}}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -193,52 +207,7 @@
         </main>
         <!-- main-area-end -->
         <!-- footer -->
-        <footer class="footer-bg footer-p" style="background-image:url(img/footer_bg_img.jpg);background-size: cover;">
-          
-            <div class="footer-top">
-                <div class="container">
-                    <div class="row justify-content-between">
-                        <div class="col-xl-12 col-lg-12 col-sm-12 text-center">
-                            <div class="footer-widget pt-120 mb-30">
-                                <div class="logo mb-35">
-                                    <a href="#"><img src="img/footer_logo.png" alt="logo"></a>
-                                </div>
-                                <div class="footer-text mb-20">
-                                    <p>The issue with any content strategy is time. Time to sit down and think about what kind of content should be created, time to stop and write, or record, edit and publish, and time to engage with your audience to promote the content you created.</p>
-                                </div>
-                                <div class="footer-social">                                    
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                    <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="copyright-wrap pb-120">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">						
-                            <div class="copyright-text text-center">
-								<div class="footer-link">
-                                    <ul>
-                                        <li><a href="#">About</a></li>
-                                        <li><a href="#">Eventime</a></li>
-                                        <li><a href="#">Blog</a></li>
-                                        <li><a href="#">Contact</a></li>
-                                        <li><a href="#">Tickets</a></li>
-                                        <li><a href="#">Venue</a></li>
-                                    </ul>
-                                </div>                              
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        @include('includes.Footer_ar')
         <!-- footer-end -->
 
 

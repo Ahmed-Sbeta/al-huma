@@ -36,6 +36,8 @@ Route::get('/about',[AboutController::class,'index']);
 Route::get('/ContactUs',[ContactController::class,'index']);
 //Events
 Route::get('/events',[EventController::class,'index']);
+Route::post('/addEvent',[EventController::class,'addEvent'])->name('addEvent');
+Route::get('/subscribe/{id}',[EventController::class,'subscribe']);
 //profile
 Route::get('/profile',[UserController::class,'index']);
 //Blog
@@ -51,7 +53,10 @@ route::group(["prefix"=>"ar"],
     Route::get('/ContactUs',[ContactController::class,'index_ar']);
     //Events
     Route::get('/events',[EventController::class,'index_ar']);
-    Route::get('/events/details',[EventController::class,'details']);
+    Route::get('/events/participants',[EventController::class,'participants']);
+    Route::get('/event/{id}',[EventController::class,'view']);
+    Route::get('/subscribe/{id}',[EventController::class,'subscribe']);    
+    Route::get('/unsubscribe/{id}',[EventController::class,'unsubscribe']);    
     //Blog
     Route::get('/blog',[BlogController::class,'index_ar']);
     //profile

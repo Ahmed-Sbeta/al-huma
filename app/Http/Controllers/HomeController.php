@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\events;
 
 use Illuminate\Http\Request;
 
@@ -19,7 +20,12 @@ class HomeController extends Controller
     }
 
     public function index_ar(){
-        return view('Pages.Home.index_ar');
+        $events = events::all()->take(3);
+        $Evining = events::where('type','evining')->latest('created_at')->first();
+        $galory = events::where('type','galory')->latest('created_at')->first();
+        $workshop = events::where('type','workshop')->latest('created_at')->first();
+        $discussions = events::where('type','discussions')->latest('created_at')->first();
+        return view('Pages.Home.index_ar',compact('events','Evining','galory','workshop','discussions'));
     }
 
     public function login_ar(){
