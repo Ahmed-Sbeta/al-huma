@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class events extends Model
 {
     use HasFactory;
-    public function participants()
+    public function users()
     {
 
-        return $this->belongsToMany(User::class, 'participations','event_id');
+        return $this->belongsToMany(User::class, 'participations');
 
     }
 }

@@ -262,25 +262,28 @@
         <div class="container pt-5 pb-5" dir="rtl">
             <div class="main-body">
                 <div class="row">
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex flex-column align-items-center text-center">
-                                    <img src="https://cdn1.iconfinder.com/data/icons/website-internet/48/website_-_female_user-512.png"
-                                        alt="Admin" class="rounded-circle p-1" width="110">
-                                    <div class="mt-3">
+                <div class="col-lg-4">
+					<div class="card">
+						<div class="card-body">
+                        <form action="{{ route('profile.updatePicture') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+							<div class="d-flex flex-column align-items-center text-center">
+								<img id="profilePreview" src="{{ asset(Storage::url(Auth::user()->image)) ?? asset('images/user.png') }}" alt="Profile Picture" class="rounded-circle p-1" style="width: 100px; height: 100px; border-radius: 50%;">
+								<input type="file" name="image" id="imageInput" style="display: none;" onchange="previewImage(event)">
+                                <div class="mt-3">
 									<h4> {{Auth::user()->name}}</h4>
-                                        @if(Auth::user()->role == 1)
+                                    @if(Auth::user()->role == 1)
 									<p class="text-secondary mb-1">مستخدم</p>
                                     @else
                                     <p class="text-secondary mb-1">ادمن</p>
                                     @endif
-                                        <button class="btn">تغيير صورة</button>
-                                        <button class="btn">حفظ</button>
-                                    </div>
-                                </div>
-                                <hr class="my-4">
-                                <ul class="list-group list-group-flush">
+                                    <button type="button" class="btn" onclick="document.getElementById('imageInput').click()">تغيير صورة</button>
+									<button class="btn">حفظ</button>
+								</div>
+                                </form>
+							</div>
+							<hr class="my-4">
+							<ul class="list-group list-group-flush">
 								<a href="/ar/profile"><li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
 									<span class="text-secondary">معلومات المستخدم</span>
 								</li></a>
@@ -300,20 +303,22 @@
                                 @endif
 								
 							</ul>
-                            </div>
-                        </div>
-                    </div>
+						</div>
+					</div>
+				</div>
                     <div class="col-lg-8">
                         <div class="d-flex justify-content-between align-items-center activity">
-                            <div><span class="activity-done">كل الفعاليات (2)</span></div>
+                            <div><span class="activity-done">كل الفعاليات ({{$events->count()}})</span></div>
                         </div>
                         <div class="mt-3">
                             <ul class="list list-inline">
+                                @if($events)
+                                @foreach($events as $event)
                                 <li class="d-flex justify-content-between">
                                     <div class="d-flex flex-row align-items-center">
                                         <i class="fa fa-check-circle checkicon"></i>
                                         <div class="mr-2">
-                                            <a href=""><h6 class="mb-0">اهمية الشباب في التنمية الاقتصادية</h6></a>
+                                            <a href=""><h6 class="mb-0">{{$event->title}}</h6></a>
                                             <div class="d-flex flex-row mt-1 text-black-50 date-time">
                                             </div>
                                         </div>
@@ -324,130 +329,18 @@
                                             <div class="menu-options"
                                                 style="display: none; position: absolute; left: 0; background-color: white;">
                                                 <ul>
-                                                    <li><a href="/view">عرض</a></li>
-                                                    <li><a href="/edit">الغاء الاشتراك</a></li>
+                                                    <li><a href="/ar/event/{{$event->id}}">عرض</a></li>
+                                                    <li><a href="/ar/unsubscribe/{{$event->id}}">الغاء الاشتراك</a></li>
                                                     <!-- <li><a href="/delete">ازالة</a></li> -->
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-                                <li class="d-flex justify-content-between">
-                                    <div class="d-flex flex-row align-items-center">
-                                        <i class="fa fa-check-circle checkicon"></i>
-                                        <div class="mr-2">
-                                            <a href=""><h6 class="mb-0">التصوير والتعديل بالهاتف  </h6></a>
-                                            <div class="d-flex flex-row mt-1 text-black-50 date-time">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex flex-row align-items-center" style="position: relative;">
-                                        <div class="d-flex flex-column mr-2">
-                                            <i class="fa fa-ellipsis-h" onclick="toggleMenu(event)"></i>
-                                            <div class="menu-options"
-                                                style="display: none; position: absolute; left: 0; background-color: white;">
-                                                <ul>
-                                                <li><a href="/view">عرض</a></li>
-                                                    <li><a href="/edit">الغاء الاشتراك</a></li>
-                                                    <!-- <li><a href="/delete">ازالة</a></li> -->
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <!-- <li class="d-flex justify-content-between">
-                                    <div class="d-flex flex-row align-items-center">
-                                        <i class="fa fa-check-circle checkicon"></i>
-                                        <div class="mr-2">
-                                            <a href=""><h6 class="mb-0"> أمسية عزف عالبيانو</h6></a>
-                                            <div class="d-flex flex-row mt-1 text-black-50 date-time">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex flex-row align-items-center" style="position: relative;">
-                                        <div class="d-flex flex-column mr-2">
-                                            <i class="fa fa-ellipsis-h" onclick="toggleMenu(event)"></i>
-                                            <div class="menu-options"
-                                                style="display: none; position: absolute; left: 0; background-color: white;">
-                                                <ul>
-                                                    <li><a href="/view">View</a></li>
-                                                    <li><a href="/edit">Edit</a></li>
-                                                    <li><a href="/delete">Delete</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="d-flex justify-content-between">
-                                    <div class="d-flex flex-row align-items-center">
-                                        <i class="fa fa-check-circle checkicon"></i>
-                                        <div class="mr-2">
-                                            <a href=""><h6 class="mb-0">فاعلية أخري تمت اضافتها</h6></a>
-                                            <div class="d-flex flex-row mt-1 text-black-50 date-time">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex flex-row align-items-center" style="position: relative;">
-                                        <div class="d-flex flex-column mr-2">
-                                            <i class="fa fa-ellipsis-h" onclick="toggleMenu(event)"></i>
-                                            <div class="menu-options"
-                                                style="display: none; position: absolute; left: 0; background-color: white;">
-                                                <ul>
-                                                    <li><a href="/view">View</a></li>
-                                                    <li><a href="/edit">Edit</a></li>
-                                                    <li><a href="/delete">Delete</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="d-flex justify-content-between">
-                                    <div class="d-flex flex-row align-items-center">
-                                        <i class="fa fa-check-circle checkicon"></i>
-                                        <div class="mr-2">
-                                            <a href=""><h6 class="mb-0">أهميه الشابات في التنمية الاقتصادية</h6></a>
-                                            <div class="d-flex flex-row mt-1 text-black-50 date-time">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex flex-row align-items-center" style="position: relative;">
-                                        <div class="d-flex flex-column mr-2">
-                                            <i class="fa fa-ellipsis-h" onclick="toggleMenu(event)"></i>
-                                            <div class="menu-options"
-                                                style="display: none; position: absolute; left: 0; background-color: white;">
-                                                <ul>
-                                                    <li><a href="/view">View</a></li>
-                                                    <li><a href="/edit">Edit</a></li>
-                                                    <li><a href="/delete">Delete</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="d-flex justify-content-between">
-                                    <div class="d-flex flex-row align-items-center">
-                                        <i class="fa fa-check-circle checkicon"></i>
-                                        <div class="mr-2">
-                                            <a href=""><h6 class="mb-0">أهميه الشابات في التنمية الاقتصادية</h6></a>
-                                            <div class="d-flex flex-row mt-1 text-black-50 date-time">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex flex-row align-items-center" style="position: relative;">
-                                        <div class="d-flex flex-column mr-2">
-                                            <i class="fa fa-ellipsis-h" onclick="toggleMenu(event)"></i>
-                                            <div class="menu-options"
-                                                style="display: none; position: absolute; left: 0; background-color: white;">
-                                                <ul>
-                                                    <li><a href="/view">View</a></li>
-                                                    <li><a href="/edit">Edit</a></li>
-                                                    <li><a href="/delete">Delete</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li> -->
-                                
+                                @endforeach
+                                @else
+                                <p class="text-right">لايوجد فعاليات سابقة</p>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -463,7 +356,16 @@
     <!-- footer-end -->
 
 
-
+    <script>
+    function previewImage(event) {
+        const reader = new FileReader(); // Create a file reader
+        reader.onload = function () {
+            const preview = document.getElementById('profilePreview');
+            preview.src = reader.result; // Set the <img> src to the file's content
+        };
+        reader.readAsDataURL(event.target.files[0]); // Read the file's data
+    }
+</script>
 
     <!-- JS here -->
     <script src="{{asset('js/vendor/modernizr-3.5.0.min.js')}}"></script>

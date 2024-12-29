@@ -19,7 +19,7 @@ class CreateOrganizersTable extends Migration
             $table->string('email');
             $table->string('phone_number');
             $table->string('password');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

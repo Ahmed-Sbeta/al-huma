@@ -152,6 +152,55 @@
         line-height: 30px;
     }
 
+        /* Style for the button */
+        .btn {
+        background-color: #1e3333;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: #1e3333;
+    }
+    select {
+    -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+    /* Style for the select dropdown */
+    .orderby {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        padding: 10px 15px;
+        border-radius: 25px;
+        font-size: 16px;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        cursor: pointer;
+        width: 200px;
+        margin-left: 10px;
+        transition: border-color 0.3s ease;
+    }
+
+    .orderby:focus {
+        border-color: #1e3333;
+        outline: none;
+    }
+
+    /* Optional: Add a custom arrow for the select dropdown */
+    .orderby {
+        background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 6"%3E%3Cpath fill="%23aaa" d="M7.69 1.79a1 1 0 0 0-1.39 0L4 4.1 1.7 1.79a1 1 0 0 0-1.39 1.39l3 3c.39.39.9.39 1.28 0l3-3a1 1 0 0 0 0-1.39z"%3E%3C/path%3E%3C/svg%3E');
+        background-position: right 10px top 50%;
+        background-repeat: no-repeat;
+        background-size: 10px;
+    }
+
 </style>
 
 <body>
@@ -190,18 +239,21 @@
             data-delay=".2s">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 col-sm-6">
-                        <select name="orderby" class="orderby" aria-label="Shop order">
-                            <option value="menu_order" selected="selected">فلتر</option>
-                            <option value="popularity">فعاليات عائلية</option>
-                            <option value="rating">للنساء فقط</option>
-                            <option value="date">حواريات</option>
-                            <option value="price">ورش عمل</option>
-                            <option value="price-desc">أمسيات</option>
-                            <option value="price-desc">معارض</option>
+                    <div class="col-lg-9 col-sm-9">
+                        <form method="GET" action="{{route('event_filter')}}">
+                        <button class="btn"> بحث</button>
+                        <select name="filter" class="orderby" aria-label="Shop order" style="direction: rtl; text-align: center;">
+                            <option value="all" selected="selected">الكل</option>
+                            <option value="women_only">للنساء فقط</option>
+                            <option value="discussions">حواريات</option>
+                            <option value="workshops">ورش عمل</option>
+                            <option value="evining">أمسيات</option>
+                            <option value="shows">معارض</option>
                         </select>
+                    </form>
                     </div>
-                    <div class="col-lg-6 col-sm-6 text-right">
+
+                    <div class="col-lg-3 col-sm-3 text-right">
                         <h6 class="mt-20 mb-30"> اظهار نتائج البحث</h6>
                     </div>
                 </div>
@@ -215,7 +267,16 @@
                                 <div class="ripple-cont"></div>
                             </div>
                             <div class="blog-table text-right">
+                                @if($event->type = "workshop")
+                                <h6 class="blog-category blog-text-success"><i class="fas fa-blog"></i> ورشة عمل</h6>
+                                @elseif($event->type = "discussions")
+                                <h6 class="blog-category blog-text-success"><i class="fas fa-blog"></i> حواريات</h6>
+                                @elseif($event->type = "Evining")
                                 <h6 class="blog-category blog-text-success"><i class="fas fa-blog"></i> أمسيات</h6>
+                                @elseif($event->type = "galory")
+                                <h6 class="blog-category blog-text-success"><i class="fas fa-blog"></i> معرض</h6>
+                                @endif
+
                                 <h4 class="blog-card-caption">
                                     <a href="/ar/event/{{$event->id}}">{{$event->title}}</a>
                                 </h4>
@@ -228,19 +289,24 @@
                         </div>
                     </div>
                     @endforeach
+                    @if($events->count() == 0)
+                        <P style="font-size: 25px;">لايوجد فعاليات</p>
+                    @endif
                 </div>
                 <div class="row">
                     <div class="col-12">
                         <div class="pagination-wrap mt-50 text-center">
                             <nav>
                                 <ul class="pagination">
-                                    <li class="page-item"><a href="#"><i class="fas fa-angle-double-left"></i></a></li>
-                                    <li class="page-item active"><a href="#">1</a></li>
-                                    <li class="page-item"><a href="#">2</a></li>
-                                    <li class="page-item"><a href="#">3</a></li>
-                                    <li class="page-item"><a href="#">...</a></li>
-                                    <li class="page-item"><a href="#">10</a></li>
-                                    <li class="page-item"><a href="#"><i class="fas fa-angle-double-right"></i></a></li>
+                                <li class="page-item {{ $events->onFirstPage() ? 'disabled' : '' }}" >
+                                    <a href="{{ $events->previousPageUrl() }}"><i class="fas fa-angle-double-left"></i></a>
+                                </li>
+
+                                @foreach ($events->getUrlRange(1, $events->lastPage()) as $page => $url)
+                                    <li class="page-item {{ $events->currentPage() == $page ? 'active' : '' }}"><a href="{{ $url }}">{{ $page }}</a></li>
+                                @endforeach
+
+                                <li class="page-item"><a href="{{ $events->nextPageUrl() }}"><i class="fas fa-angle-double-right"></i></a></li>
                                 </ul>
                             </nav>
                         </div>

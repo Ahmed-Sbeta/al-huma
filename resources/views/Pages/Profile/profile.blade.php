@@ -186,22 +186,31 @@
         <!-- profile-area -->
         <div class="container pt-5 pb-5" dir="rtl">
 		<div class="main-body">
+        @if(session('msg'))
+                <div class="alert text-right alert-success">
+                {{ session('msg') }}
+                </div>
+                @endif
 			<div class="row">
 				<div class="col-lg-4">
 					<div class="card">
 						<div class="card-body">
+                        <form action="{{ route('profile.updatePicture') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
 							<div class="d-flex flex-column align-items-center text-center">
-								<img src="https://cdn1.iconfinder.com/data/icons/website-internet/48/website_-_female_user-512.png" alt="Admin" class="rounded-circle p-1" width="110">
-								<div class="mt-3">
+								<img id="profilePreview" src="{{ asset(Storage::url(Auth::user()->image)) ?? asset('images/user.png') }}" alt="Profile Picture" class="rounded-circle p-1" style="width: 100px; height: 100px; border-radius: 50%;">
+								<input type="file" name="image" id="imageInput" style="display: none;" onchange="previewImage(event)">
+                                <div class="mt-3">
 									<h4> {{Auth::user()->name}}</h4>
                                     @if(Auth::user()->role == 1)
 									<p class="text-secondary mb-1">مستخدم</p>
                                     @else
                                     <p class="text-secondary mb-1">ادمن</p>
                                     @endif
-									<button class="btn">تغيير صورة</button>
+                                    <button type="button" class="btn" onclick="document.getElementById('imageInput').click()">تغيير صورة</button>
 									<button class="btn">حفظ</button>
 								</div>
+                                </form>
 							</div>
 							<hr class="my-4">
 							<ul class="list-group list-group-flush">
@@ -229,13 +238,15 @@
 				</div>
 				<div class="col-lg-8">
 					<div class="card">
+                        <form action="{{route('editinfo')}}" method="get">
+                            @csrf
 						<div class="card-body text-right">
-							<div class="row mb-3">
+                            <div class="row mb-3">
 								<div class="col-sm-3">
 									<h6 class="mb-0">اسم المتخدم</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="{{Auth::user()->name}}  ">
+									<input type="text" class="form-control" name="name" value="{{Auth::user()->name}}" required>
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -243,7 +254,7 @@
 									<h6 class="mb-0">البريد الالكتروني</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="{{Auth::user()->email}}">
+									<input type="text" class="form-control" name="email" value="{{Auth::user()->email}}" required>
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -251,7 +262,7 @@
 									<h6 class="mb-0">رقم الهاتف</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="{{Auth::user()->phone_number}}">
+									<input type="text" class="form-control" name="phone_number" value="{{Auth::user()->phone_number}}" required>
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -271,18 +282,19 @@
 									<h6 class="mb-0">عمر المستخدم</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="{{Auth::user()->age}}">
+									<input type="text" class="form-control" name="Age" value="{{Auth::user()->age}}" required>
 								</div>
 							</div>
                            
 							<div class="row">
 								<div class="col-sm-3"></div>
 								<div class="col-sm-9 text-secondary">
-									<input type="button" class="btn btn-primary px-4" value="حفظ التغييرات">
+                                <button class="btn btn-primary px-4">حفظ التغييرات</button>
 								</div>
 							</div>
 						</div>
 					</div>
+                </form>
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="card">
@@ -309,6 +321,16 @@
 
 
     <!-- JS here -->
+    <script>
+    function previewImage(event) {
+        const reader = new FileReader(); // Create a file reader
+        reader.onload = function () {
+            const preview = document.getElementById('profilePreview');
+            preview.src = reader.result; // Set the <img> src to the file's content
+        };
+        reader.readAsDataURL(event.target.files[0]); // Read the file's data
+    }
+</script>
     <script src="{{asset('js/vendor/modernizr-3.5.0.min.js')}}"></script>
         <script src="{{asset('js/vendor/jquery-1.12.4.min.js')}}"></script>
         <script src="{{asset('js/popper.min.js')}}"></script>
@@ -328,6 +350,7 @@
 		<script src="{{asset('js/isotope.pkgd.min.js')}}"></script>
         <script src="{{asset('js/imagesloaded.pkgd.min.js')}}"></script>
         <script src="{{asset('js/main.js')}}"></script>
+      
 </body>
 
 </html>

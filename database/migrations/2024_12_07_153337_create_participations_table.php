@@ -16,7 +16,7 @@ class CreateParticipationsTable extends Migration
         Schema::create('participations', function (Blueprint $table) {
             $table->id();
             $table->integer('User_id')->references('id')->on('users');
-            $table->integer('event_id')->references('id')->on('events');
+            $table->integer('events_id')->references('id')->on('events');
             $table->timestamps();
         });
     }

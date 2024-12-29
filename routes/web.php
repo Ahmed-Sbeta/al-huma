@@ -53,10 +53,11 @@ route::group(["prefix"=>"ar"],
     Route::get('/ContactUs',[ContactController::class,'index_ar']);
     //Events
     Route::get('/events',[EventController::class,'index_ar']);
-    Route::get('/events/participants',[EventController::class,'participants']);
+    Route::get('/events/participants/{id}',[EventController::class,'participants']);
     Route::get('/event/{id}',[EventController::class,'view']);
     Route::get('/subscribe/{id}',[EventController::class,'subscribe']);    
-    Route::get('/unsubscribe/{id}',[EventController::class,'unsubscribe']);    
+    Route::get('/unsubscribe/{id}',[EventController::class,'unsubscribe']);  
+    Route::get('/events/filter',[EventController::class,'filter'])->name('event_filter');  
     //Blog
     Route::get('/blog',[BlogController::class,'index_ar']);
     //profile
@@ -65,6 +66,10 @@ route::group(["prefix"=>"ar"],
     Route::get('/profile/users',[UserController::class,'all_users']);
     Route::get('/profile/add_event',[UserController::class,'add_event']);
     Route::get('/profile/add_organizer',[UserController::class,'add_organizer']);
+    Route::post('/addorganizer',[UserController::class,'addOrganizer'])->name('addOrg');
+    Route::get('/profile/editinfo',[UserController::class,'editinfo'])->name('editinfo');
+    Route::post('/profile/update-picture', [UserController::class, 'updatePicture'])->name('profile.updatePicture');
+
     //auth
     Route::get('/login',[HomeController::class, 'login_ar']); //login view
     Route::get('/register',[HomeController::class, 'register_ar']); //login view

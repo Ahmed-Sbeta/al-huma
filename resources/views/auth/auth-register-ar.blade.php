@@ -82,17 +82,25 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 <body>
 	
 	<div class="limiter">
+	
 		<div class="container-login100">
+		
 			<div class="wrap-login100">
+			
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="{{asset('auth_assets/images/img-04.png')}}" alt="IMG">
 				</div>
-
-				<form class="login100-form validate-form" method="POST" action="{{route('register')}}" enctype="multipart/form-data">
+			
+				<form id="password-form" class="login100-form validate-form" method="POST" action="{{route('register')}}" enctype="multipart/form-data">
 					@csrf
 					<span class="login100-form-title">
 						انشاء حساب 
 					</span>
+					@if(session('msg'))
+                <div class="alert text-right alert-success">
+                {{ session('msg') }}
+                </div>
+                @endif
 					<div class="wrap-input100 validate-input">
 						<input class="input100 text-right" type="text" name="name" placeholder="الأسم الكامل">
 						<span class="focus-input100"></span>
@@ -110,7 +118,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 					</div>
 
 					<div class="wrap-input100 validate-input">
-						<input class="input100 text-right" type="text" name="phone_number" placeholder="رقم الهاتف">
+						<input class="input100 text-right" type="text" name="phone_number" id="phone_number" placeholder="رقم الهاتف">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-phone" aria-hidden="true"></i>
@@ -136,14 +144,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100 text-right" type="password" name="password" placeholder="الرمز السري">
+						<input class="input100 text-right" type="password" name="password" id="password" placeholder="الرمز السري">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100 text-right" type="password" name="password_confirmation" placeholder="اعادة الرمز السري">
+						<input class="input100 text-right" type="password" name="password_confirmation" id="password_confirmation" placeholder="اعادة الرمز السري">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -151,7 +159,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 					</div>
 					
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" style="background-color: #1e3333;">
+						<button type="submit" class="login100-form-btn" style="background-color: #1e3333;">
 							إنشاء حساب
 						</button>
 					</div>
@@ -175,6 +183,54 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 		</div>
 	</div>
 	
+
+	<script>
+    document.getElementById('password-form').addEventListener('submit', function(event) {
+        // Get the values from the input fields
+        var password = document.getElementById('password').value;
+        var passwordConfirmation = document.getElementById('password_confirmation').value;
+		var phone_number = document.getElementById('phone_number').value;
+
+        // Create a function to display custom alerts
+        function showAlert(message, type) {
+            var alertDiv = document.createElement('div');
+            alertDiv.classList.add('alert', 'text-right', type);
+            alertDiv.textContent = message;
+            
+            // Insert the alert message before the form
+            var form = document.getElementById('password-form');
+            form.insertBefore(alertDiv, form.firstChild);
+            
+            // Remove the alert after 3 seconds
+            setTimeout(function() {
+                alertDiv.remove();
+            }, 3000);
+        }
+        
+		if(phone_number.length != 10){
+			showAlert('رقم الهاتف يجب ان يتكون من 10 خانات 09########', 'alert-danger');
+			event.preventDefault(); // Prevent form submission
+			return false;
+		}
+        // Check if the password is at least 5 characters long
+        if (password.length < 5) {
+            showAlert('الرمز السري يجب أن يحتوي على 5 أحرف على الأقل', 'alert-danger');
+            event.preventDefault(); // Prevent form submission
+            return false;
+        }
+
+        // Check if the passwords match
+        if (password !== passwordConfirmation) {
+            showAlert('الرمز السري غير متطابق مع إعادة الرمز السري', 'alert-danger');
+            event.preventDefault(); // Prevent form submission
+            return false;
+        }
+
+        
+        // If all conditions are met, allow the form to submit
+        return true;
+    });
+</script>
 	
 
 	

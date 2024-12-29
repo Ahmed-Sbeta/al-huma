@@ -101,20 +101,20 @@
 										<div countdown class="conterdown wow fadeInDown animated" data-animation="fadeInDown animated" data-delay=".2s" data-date="">
 										 <div class="timer">										 
 											<div class="timer-outer bdr1">												
-											   <span class="days" data-days>17</span> 
+											   <span class="days" data-days>{{$discussionsCount}}</span> 
 											   <div class="smalltext">حـواريات</div>
 											   <div class="value-bar"></div>
 											</div>
 											<div class="timer-outer bdr2">
-											   <span class="hours" data-hours>19</span> 
+											   <span class="hours" data-hours>{{$workshopCount}}</span> 
 											   <div class="smalltext">ورش عمل</div>
 											</div>
 											<div class="timer-outer bdr3">
-											   <span class="minutes" data-minutes>29</span> 
+											   <span class="minutes" data-minutes>{{$EviningCount}}</span> 
 											   <div class="smalltext">أمسـيات</div>
 											</div>
 											<div class="timer-outer bdr4">
-											   <span class="seconds" data-seconds>25</span> 
+											   <span class="seconds" data-seconds>{{$galoryCount}}</span> 
 											   <div class="smalltext">مـعارض</div>
 											</div>
 											<p id="time-up"></p>
@@ -300,7 +300,9 @@
 								 <p style="height: 90px;
                                            overflow: hidden;
                                            text-overflow: ellipsis;"> {{ $discussions->description}} </p>
+                                           @if(Auth::user())
 								 <a href="/event/subscribe/{{$discussions->id}}" class="btn mt-20 mr-10"><i class="far fa-ticket-alt pl-2"></i> اشتراك </a>
+                                 @endif
 								 <a href="/ar/event/{{$discussions->id}}" class="btn mt-20">اقراء المزيد</a>
 								 <div class="crical"><i class="fal fa-arrow-left"></i> </div>
                                  @else
@@ -331,7 +333,9 @@
 								 <p style="height: 90px;
                                            overflow: hidden;
                                            text-overflow: ellipsis;"> {{ $workshop->description}} </p>
+                                           @if(Auth::user())
 								 <a href="/event/subscribe/{{$workshop->id}}" class="btn mt-20 mr-10"><i class="far fa-ticket-alt pl-2"></i> اشتراك </a>
+                                 @endif
 								 <a href="/ar/event/{{$workshop->id}}" class="btn mt-20">اقراء المزيد</a>
 								 <div class="crical"><i class="fal fa-arrow-left"></i> </div>
                                  @else
@@ -362,7 +366,9 @@
 								 <p style="height: 90px;
                                            overflow: hidden;
                                            text-overflow: ellipsis;"> {{ $Evining->description}} </p>
+                                                                                      @if(Auth::user())
 								 <a href="/event/subscribe/{{$Evining->id}}" class="btn mt-20 mr-10"><i class="far fa-ticket-alt pl-2"></i> اشتراك </a>
+                                 @endif
 								 <a href="/ar/event/{{$Evining->id}}" class="btn mt-20">اقراء المزيد</a>
 								 <div class="crical"><i class="fal fa-arrow-left"></i> </div>
                                  @else
@@ -392,7 +398,10 @@
 								 <p style="height: 90px;
                                            overflow: hidden;
                                            text-overflow: ellipsis;"> {{ $galory->description}} </p>
+                                @if(Auth::user())
+
 								 <a href="/event/subscribe/{{$galory->id}}" class="btn mt-20 mr-10"><i class="far fa-ticket-alt pl-2"></i> اشتراك </a>
+                                 @endif
 								 <a href="/ar/event/{{$galory->id}}" class="btn mt-20">اقراء المزيد</a>
 								 <div class="crical"><i class="fal fa-arrow-left"></i> </div>
                                  @else

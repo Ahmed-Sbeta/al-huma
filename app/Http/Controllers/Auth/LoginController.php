@@ -58,7 +58,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect('/ar');
         }
-        return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
+        return redirect("/ar/login")->with('err','عفوا البيانات المدخلة غير صحيحة ارجو اعادة المحاولة');
     }
     // public function username()
     // {

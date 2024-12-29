@@ -83,7 +83,15 @@ a:hover {
 					<span class="login100-form-title">
 						تسجيل الدخول
 					</span>
-
+					@if(session('msg'))
+                <div class="alert text-right alert-success">
+                {{ session('msg') }}
+                </div>
+				@elseif(session('err'))
+				<div class="alert text-right alert-danger">
+                {{ session('err') }}
+                </div>
+                @endif
 					<div class="wrap-input100 validate-input " data-validate = "Valid email is required: ex@abc.xyz">
 						<input class="input100 text-right" type="text" name="email" placeholder="البريد الالكتروني">
 						<span class="focus-input100"></span>

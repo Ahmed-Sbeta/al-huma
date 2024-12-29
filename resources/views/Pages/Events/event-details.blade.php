@@ -78,9 +78,13 @@
 			<!-- shop-banner-area start -->
         <section class="shop-banner-area pt-120 pb-90 wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s">
             <div class="container">
-                @if(session('msg'))
+            @if(session('msg'))
                 <div class="alert text-right alert-success">
                 {{ session('msg') }}
+                </div>
+				@elseif(session('err'))
+				<div class="alert text-right alert-danger">
+                {{ session('err') }}
                 </div>
                 @endif
                 <div class="row">

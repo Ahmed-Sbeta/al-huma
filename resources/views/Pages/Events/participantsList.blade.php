@@ -65,25 +65,30 @@
                     <div class="row justify-content-center">
                         <div class="col-xl-6 col-lg-8">
                             <div class="section-title text-center mb-80">
-                                <span class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s">Event title</span>
-                                <h2 class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".4s"> participants </h2>
+                                <span class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".2s">{{$event->title}} </span>
+                                <h2 class="wow fadeInUp animated" data-animation="fadeInUp animated" data-delay=".4s"> المشتركين </h2>
                             </div>
                         </div>
                     </div>
                     <div class="row">
+                        @foreach($participants as $par)
                         <div class="col-lg-3 col-md-6 wow fadeInDown animated" data-animation="fadeInUp animated" data-delay=".2s">
                               <div class="single-team text-center pt-50  pb-50 mb-30">
                                 <div class="team-thumb">
-                                    <img src="{{asset('img/speaker_1.png')}}" alt="img">
+                                    <img src="{{$par->image ? asset(Storage::url($par->image)) : asset('images/users.png') }}" alt="img" style="width: 100px; height: 100px; border-radius: 50%;">
                                 </div>
                                 <div class="team-info">
-                                    <h5>aya abdalsalam</h5>
-                                   <p>participants</p>
-									<strong>Age: 25</strong> 
+                                    <h5>{{$par->name}}</h5>
+                                   <p>{{$par->phone_number}}</p>
+									<strong>العمر: {{$par->age}}</strong> 
                                 </div>
                             </div>
                         </div> 
+                        @endforeach
                     </div>
+                </div>
+                <div>
+            {{ $participants->links() }}
                 </div>
             </section>
             <!-- team-area-end -->
