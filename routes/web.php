@@ -54,6 +54,8 @@ route::group(["prefix"=>"ar"],
     //Events
     Route::get('/events',[EventController::class,'index_ar']);
     Route::get('/events/participants/{id}',[EventController::class,'participants']);
+    Route::get('/event/delete/{id}',[UserController::class,'delete']);
+    Route::get('/event/edit/{id}',[EventController::class,'edit']);
     Route::get('/event/{id}',[EventController::class,'view']);
     Route::get('/subscribe/{id}',[EventController::class,'subscribe']);    
     Route::get('/unsubscribe/{id}',[EventController::class,'unsubscribe']);  

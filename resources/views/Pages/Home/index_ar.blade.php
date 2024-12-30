@@ -221,7 +221,7 @@
                              <div class="blog-content">
                                  <div class="b-meta mb-20">
                                  <ul>
-                                     <li><i class="fa fa-user ml-2"></i>قام 5 بالاشتراك</li>
+                                     <li><i class="fa fa-user ml-2"></i>قام {{$event->users->count()}} بالاشتراك</li>
                                      <li><a href="/ar/event/{{$event->id}}"><i class="far fa-clock ml-2"></i>{{$event->event_start}}</a></li>
                                  </ul>
                                  </div>

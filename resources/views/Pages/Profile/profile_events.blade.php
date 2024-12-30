@@ -261,6 +261,11 @@
         <!-- profile-area -->
         <div class="container pt-5 pb-5" dir="rtl">
             <div class="main-body">
+            @if(session('msg'))
+                <div class="alert text-right alert-success">
+                {{ session('msg') }}
+                </div>
+                @endif
                 <div class="row">
                 <div class="col-lg-4">
 					<div class="card">
@@ -328,16 +333,25 @@
                                             <i class="fa fa-ellipsis-h" onclick="toggleMenu(event)"></i>
                                             <div class="menu-options"
                                                 style="display: none; position: absolute; left: 0; background-color: white;">
+                                                @if(Auth::user()->role == 1)
                                                 <ul>
                                                     <li><a href="/ar/event/{{$event->id}}">عرض</a></li>
                                                     <li><a href="/ar/unsubscribe/{{$event->id}}">الغاء الاشتراك</a></li>
                                                     <!-- <li><a href="/delete">ازالة</a></li> -->
                                                 </ul>
+                                                @else
+                                                <ul>
+                                                    <li><a href="/ar/event/{{$event->id}}">عرض</a></li>
+                                                    <li><a href="/ar/event/edit/{{$event->id}}"> تعديل </a></li>
+                                                    <li><a href="/ar/event/delete/{{$event->id}}">مسح</a></li>
+                                                </ul>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
                                 </li>
                                 @endforeach
+                                {{ $events->links('pagination::simple-default') }}
                                 @else
                                 <p class="text-right">لايوجد فعاليات سابقة</p>
                                 @endif
@@ -354,7 +368,6 @@
     <!-- footer -->
     @include('includes.footer_ar')
     <!-- footer-end -->
-
 
     <script>
     function previewImage(event) {

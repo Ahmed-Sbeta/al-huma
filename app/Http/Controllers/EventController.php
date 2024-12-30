@@ -13,7 +13,7 @@ class EventController extends Controller
     }
 
     public function index_ar(){
-        $events = events::paginate(9);
+        $events = events::latest('created_at')->paginate(9);
         return view('Pages.Events.events_ar',compact('events'));
     }
 
@@ -91,7 +91,7 @@ class EventController extends Controller
         $event->image= $image->storeAs('public',$imageName);
 
         $event->save();
-        return redirect()->back()->with('msg', 'Event added succusfully');
+        return redirect()->back()->with('msg', 'تمت اضافة فعالية بنجاح !');
     }
 
     public function filter(Request $request){

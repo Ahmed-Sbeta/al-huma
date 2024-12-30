@@ -20,7 +20,7 @@ class HomeController extends Controller
     }
 
     public function index_ar(){
-        $events = events::all()->take(3);
+        $events = events::latest('created_at')->take(3)->get();
         $Evining = events::where('type','evining')->latest('created_at')->first();
         $galory = events::where('type','galory')->latest('created_at')->first();
         $workshop = events::where('type','workshop')->latest('created_at')->first();

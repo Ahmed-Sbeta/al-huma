@@ -19,6 +19,11 @@ class UserController extends Controller
     }
 
     public function all_events(){
+        if(Auth::user()->role == 2){
+            $events= events::latest()->paginate(8);
+            return view('Pages.Profile.profile_events',compact('events'));
+        }
+
         $events = Auth::user()->events;
         return view('Pages.Profile.profile_events',compact('events'));
     }
@@ -68,7 +73,7 @@ class UserController extends Controller
         $organizer->phone_number = request('phone_number');
         $organizer->age = request('Age');
         $organizer->sex = request('Gender');
-        $organizer->role = 1;
+        $organizer->role = 2;
         $organizer->password = Hash::make(request('password'));
         $organizer->save();
         $org = new Organizer;
@@ -80,13 +85,8 @@ class UserController extends Controller
         return redirect()->back()->with('msg','تــمــت إضــافــة منظم بــنــجــاح');
     }
 
-    public function updatePicture(Request $request)
-{
+    public function updatePicture(Request $request){
     
-    $request->validate([
-        'image' => 'required|image|mimes:jpeg,png,jpg,gif',
-    ]);
-
     $user = Auth::user();
 
     if ($user->image) {
@@ -103,5 +103,13 @@ class UserController extends Controller
     $user->save();
 
     return redirect()->back()->with('msg', 'تم تغيير الصورة بنجاح');
-}
+    }
+
+    public function delete($id){
+    $event = events::find($id)->delete();
+    $participants = Participation::where('events_id',$id)->delete();
+
+    return redirect()->back()->with('msg', 'تم الحذف بنجاح');
+    }
+
 }
