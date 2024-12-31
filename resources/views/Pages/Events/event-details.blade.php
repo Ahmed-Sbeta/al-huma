@@ -151,7 +151,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="id-add-in" data-toggle="tab" href="#id-add" role="tab"
-                                        aria-controls="profile" aria-selected="false">عن فاعاليات الحومة</a>
+                                        aria-controls="profile" aria-selected="false">عن فعاليات الحومة</a>
                                 </li>
                                 <!-- <li class="nav-item">
                                     <a class="nav-link" id="id-r" data-toggle="tab" href="#id-rev" role="tab"

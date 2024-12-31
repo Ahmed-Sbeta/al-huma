@@ -54,14 +54,14 @@ class EventController extends Controller
         $sub->User_id = Auth::id();
         $sub->Events_id = $id;
         $sub->save();
-        return redirect()->back()->with('msg','تم الاشتراك فالعالية بنجاح');
+        return redirect()->back()->with('msg','تم الاشتراك في الفعالية بنجاح');
     
     }
 
     Public function unsubscribe($id){
         $sub = participation::where('events_id',$id)->where('user_id',Auth::id())->get();
         $sub->first()->delete();
-        return redirect()->back()->with('msg','تم الغاء الاشتراك فالعالية بنجاح');
+        return redirect()->back()->with('msg','تم الغاء الاشتراك في الفعالية بنجاح');
     }
 
     public function addEvent(Request $request){

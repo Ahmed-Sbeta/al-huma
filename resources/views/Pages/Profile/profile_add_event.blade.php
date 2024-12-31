@@ -330,7 +330,7 @@
 							<div class="row">
 								<div class="col-sm-3"></div>
 								<div class="col-sm-9 text-secondary">
-									<button class="btn btn-primary px-4">إضافة فاعلية</button>
+									<button class="btn btn-primary px-4">إضافة فعالية</button>
 								</div>
 							</div>
 						</div>

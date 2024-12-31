@@ -243,7 +243,7 @@
 						<div class="card-body text-right">
                             <div class="row mb-3">
 								<div class="col-sm-3">
-									<h6 class="mb-0">اسم المتخدم</h6>
+									<h6 class="mb-0">اسم المستخدم</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
 									<input type="text" class="form-control" name="name" value="{{Auth::user()->name}}" required>
