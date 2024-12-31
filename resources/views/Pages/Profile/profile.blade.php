@@ -257,6 +257,7 @@
 									<input type="text" class="form-control" name="email" value="{{Auth::user()->email}}" required>
 								</div>
 							</div>
+                            @if(Auth::user()->role == 1)
 							<div class="row mb-3">
 								<div class="col-sm-3">
 									<h6 class="mb-0">رقم الهاتف</h6>
@@ -285,7 +286,7 @@
 									<input type="text" class="form-control" name="Age" value="{{Auth::user()->age}}" required>
 								</div>
 							</div>
-                           
+                           @endif
 							<div class="row">
 								<div class="col-sm-3"></div>
 								<div class="col-sm-9 text-secondary">

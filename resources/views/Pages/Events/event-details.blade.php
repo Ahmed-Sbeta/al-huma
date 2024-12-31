@@ -124,12 +124,16 @@
                                 <div style="font-size:18px;"> {{$event->location}}  </div>
                             </div>                            
                             <div class="product-details-action">
+                                @if(Auth::user()->role == 1)
                             @if($hasParticipated)
                                 <a href="/ar/unsubscribe/{{$event->id}}" class="btn btn-black" style="color: #fff;" type="submit">الغاء الاشتراك</a>                                   
                             @else
                                 <a href="/ar/subscribe/{{$event->id}}" class="btn btn-black" style="color: #fff;" type="submit">اشتراك</a>                                   
                             @endif
+                                 @endif
+                            @if(Auth::user()->role == 2)
                                 <a href="/ar/events/participants/{{$event->id}}" class="btn btn-black" style="color: #fff;" type="submit">قائمة المشتركين</a>
+                                @endif
                             </div>
 							
                         </div>

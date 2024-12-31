@@ -238,7 +238,9 @@
                   <div><a  data-abc="true"><span class="w-48 avatar"><img src="{{$user->image ? asset(storage::url( $user->image)) : asset('images/users.png') }}" alt="." style="width: 100px; height: 55px; border-radius: 50%;"></span></a></div>
                   <div class="flex">
                      <a class="item-author text-color" data-abc="true">{{$user->name}}</a>
+                     @if($user->role == 1)
                      <div class="item-except text-muted text-sm h-1x">جنس : {{$user->sex}} , العمر : {{$user->age}}</div>
+                     @endif
                   </div>
                   <div class="no-wrap">
                      <div class="item-date text-muted text-sm d-none d-md-block">تاريخ التسجيل {{$user->created_at->format('Y-m-d')}}</div>
