@@ -257,36 +257,7 @@
 									<input type="text" name="email" class="form-control" required>
 								</div>
 							</div>
-                            <div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">رقم الهاتف  </h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" name="phone_number" class="form-control" required >
-								</div>
-							</div>
                             
-                            <div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">العمر </h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" name="Age" class="form-control" value="" required>
-								</div>
-							</div>
-                            <div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">الجنس</h6>
-								</div>
-                                
-								<div class="col-sm-9 text-secondary">
-                                <select class="ol-sm-9 text-secondary form-control" name="Gender" placeholder="الجنس" style="border: 0;" required>
-							<option value="null" disabled selected>الجنس</option>
-							<option value="Male">ذكر</option>
-							<option value="Female">انثي</option>
-						        </select>
-								</div>
-							</div>
                             <div class="row mb-3">
 								<div class="col-sm-3">
 									<h6 class="mb-0"> الرمز السري </h6>
